@@ -133,9 +133,9 @@ def main_window():
 
 #备份操作
 def backup_folder():
-    source = settings["set"]["Folder1"]
+    source = settings["set"]["Folder1"].replace("\\", "/")
+    target = settings["set"]["Folder2"].replace("\\", "/")
     Folder1 = re.search(r'/([^/]+)$', source)
-    target = settings["set"]["Folder2"]
     current_time = time.strftime("%Y%m%d%H%M%S")
     target_folder = os.path.join(target, target+"/"+Folder1.group(1) +"_"+ current_time)
     shutil.copytree(source, target_folder)
